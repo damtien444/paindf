@@ -101,7 +101,7 @@
     <div class="container">
         <div class="media-container">
             <div class="media-wrapper">
-                <h4>Stimuli Video</h4>
+                <h4>Stimuli Signal</h4>
                 <video id="stimuliVideo" controls autoplay muted loop>
                     <source src="" type="video/mp4">
                     <source src="" type="video/webm">
@@ -110,31 +110,26 @@
                 <p class="error-message" id="stimuliErrorMessage" style="display:none;">Error: Stimuli video could not be loaded. Please check the file path and format.</p>
             </div>
             <div class="media-wrapper">
-                <h4>Selected Video</h4>
+                <h4>Predicted Facial Expression</h4>
                 <video id="videoPlayer" controls autoplay muted loop>
                     <source src="" type="video/mp4">
                     <source src="" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
                 <p class="error-message" id="errorMessage" style="display:none;">Error: Video could not be loaded. Please check the file path and format.</p>
-                <button class="mute-toggle" onclick="toggleMute()">Unmute</button>
-            </div>
-            <div class="media-wrapper">
-                <h4>Movement area</h4>
-                <img id="imageDisplay" src="" alt="Image Preview" />
             </div>
         </div>
         <div class="controls">
             <div class="control-group">
-                <h3>Stimuli (x)</h3>
+                <h3>Stimuli level</h3>
                 <div class="radio-group" id="stimuliGroup"></div>
             </div>
             <div class="control-group">
-                <h3>Expressiveness (y)</h3>
+                <h3>Expressiveness index</h3>
                 <div class="radio-group" id="expressivenessGroup"></div>
             </div>
             <div class="control-group">
-                <h3>Emotion (z)</h3>
+                <h3>Emotion index</h3>
                 <div class="radio-group" id="emotionGroup"></div>
             </div>
         </div>
@@ -179,21 +174,17 @@
         function loadMedia() {
             const videoPlayer = document.getElementById('videoPlayer');
             const stimuliVideo = document.getElementById('stimuliVideo');
-            const imageDisplay = document.getElementById('imageDisplay');
             const errorMessage = document.getElementById('errorMessage');
             const stimuliErrorMessage = document.getElementById('stimuliErrorMessage');
 
-            const videoFilename = `stimuli_${currentVideo.x}_expressiveness_${currentVideo.y}_emotion_${currentVideo.z}/0_reencode.mp4`;
+            const videoFilename = `stimuli_${currentVideo.x}_expressiveness_${currentVideo.y}_emotion_${currentVideo.z}/0.mp4`;
             const stimuliFilename = `stimuli_${currentVideo.x}.mp4`;
-            const imageFilename = `stimuli_${currentVideo.x}_expressiveness_${currentVideo.y}_emotion_${currentVideo.z}.png`;
 
             const videoSrc = videoDirectory + videoFilename;
             const stimuliSrc = videoDirectory + stimuliFilename;
-            const imageSrc = videoDirectory + imageFilename;
 
             videoPlayer.src = videoSrc;
             stimuliVideo.src = stimuliSrc;
-            imageDisplay.src = imageSrc;
 
             videoPlayer.load();
             stimuliVideo.load();
@@ -215,16 +206,6 @@
             };
         }
 
-        function toggleMute() {
-            const videoPlayer = document.getElementById('videoPlayer');
-            const stimuliVideo = document.getElementById('stimuliVideo');
-            const muteToggle = document.querySelector('.mute-toggle');
-            const isMuted = !videoPlayer.muted;
-
-            videoPlayer.muted = isMuted;
-            stimuliVideo.muted = isMuted;
-            muteToggle.textContent = isMuted ? 'Unmute' : 'Mute';
-        }
 
         // Initialize radio buttons
         createRadioButtons('stimuliGroup', stimuliRange, 'x');
