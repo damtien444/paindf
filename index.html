@@ -1,269 +1,557 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAINDIFFUSION: Can robot express pain?</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
 
-        .media-container {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        .media-wrapper {
-            flex: 1;
-            margin-right: 20px;
-            text-align: center;
-        }
 
-        .media-wrapper:last-child {
-            margin-right: 0;
-        }
+  <title>Academic Project Page</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
 
-        video {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
 
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  <style>
+    /* Styles for the video demo section */
+    .video-demo-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .media-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .media-wrapper {
+      flex: 1;
+      margin-right: 20px;
+      text-align: center;
+    }
+    .media-wrapper:last-child {
+      margin-right: 0;
+    }
+    .video-demo-container video {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .control-group {
+      flex: 1;
+      margin-right: 10px;
+    }
+    .control-group:last-child {
+      margin-right: 0;
+    }
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .error-message {
+      color: red;
+      font-style: italic;
+      text-align: center;
+    }
+    .video-controls {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .video-controls button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
 
-        .control-group {
-            flex: 1;
-            margin-right: 10px;
-        }
 
-        .control-group:last-child {
-            margin-right: 0;
-        }
-
-        h3 {
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin-bottom: 5px;
-        }
-
-        .error-message {
-            color: red;
-            font-style: italic;
-            text-align: center;
-        }
-
-        .video-controls {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .video-controls button {
-            margin: 0 5px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 
+
 <body>
-    <div class="container">
-        <div class="media-container">
-            <div class="media-wrapper">
-                <h4>Stimuli Signal</h4>
-                <video id="stimuliVideo">
-                    <source src="" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p class="error-message" id="stimuliErrorMessage" style="display:none;">Error: Stimuli video could not
-                    be loaded. Please check the file path and format.</p>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
+                  <span class="author-block">
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block">Institution Name<br>Conferance name and year</span>
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                    <!-- Supplementary PDF link -->
+                    <span class="link-block">
+                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Supplementary</span>
+                    </a>
+                  </span>
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
             </div>
-            <div class="media-wrapper">
-                <h4>Predicted Facial Expression</h4>
-                <video id="videoPlayer">
-                    <source src="" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p class="error-message" id="errorMessage" style="display:none;">Error: Video could not be loaded.
-                    Please check the file path and format.</p>
-            </div>
+          </div>
         </div>
-        <div class="video-controls">
-            <button id="playPauseBtn">Play</button>
-            <button id="muteBtn">Mute</button>
-        </div>
-        <div class="controls">
-            <div class="control-group">
-                <h3>Stimuli level</h3>
-                <div class="radio-group" id="stimuliGroup"></div>
-            </div>
-            <div class="control-group">
-                <h3>Expressiveness index</h3>
-                <div class="radio-group" id="expressivenessGroup"></div>
-            </div>
-            <div class="control-group">
-                <h3>Emotion index</h3>
-                <div class="radio-group" id="emotionGroup"></div>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <script>
-        const videoDirectory = 'demo_video/';
-        const stimuliRange = [1, 2, 3, 4];
-        const expressivenessRange = [5, 6, 7, 8, 9, 10, 11];
-        const emotionMap = {
-            0: 'Anger',
-            1: 'Contempt',
-            2: 'Disgust',
-            3: 'Fear',
-            4: 'Happiness',
-            5: 'Neutral',
-            6: 'Sadness',
-            7: 'Surprise'
-        };
-        let currentVideo = { x: 1, y: 5, z: 0 };
 
-        const stimuliVideo = document.getElementById('stimuliVideo');
-        const videoPlayer = document.getElementById('videoPlayer');
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const muteBtn = document.getElementById('muteBtn');
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video poster="" id="tree" autoplay controls muted loop height="100%">
+        <!-- Your video here -->
+        <source src="static/videos/banner_video.mp4"
+        type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
 
-        function createRadioButtons(groupId, range, parameter, useLabels = false) {
-            const group = document.getElementById(groupId);
-            range.forEach(value => {
-                const label = document.createElement('label');
-                const displayValue = useLabels ? emotionMap[value] : value;
-                label.innerHTML = `
-            <input type="radio" name="${groupId}" value="${value}" 
-                   ${value === currentVideo[parameter] ? 'checked' : ''}
-                   onchange="updateVideo('${parameter}', ${value})">
-            ${displayValue}
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered">
+          First image description.
+        </h2>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered">
+          Second image description.
+        </h2>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered">
+         Third image description.
+       </h2>
+     </div>
+     <div class="item">
+      <!-- Your image here -->
+      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
+      <h2 class="subtitle has-text-centered">
+        Fourth image description.
+      </h2>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
+
+
+
+
+<!-- Youtube video -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <!-- Paper video. -->
+      <h2 class="title is-3">Video Presentation</h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          
+          <div class="publication-video">
+            <!-- Youtube embed code here -->
+            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End youtube video -->
+
+
+<!-- Video carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Another Carousel</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-video1">
+          <video poster="" id="video1" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/carousel1.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video2">
+          <video poster="" id="video2" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/carousel2.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video3">
+          <video poster="" id="video3" autoplay controls muted loop height="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/carousel3.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End video carousel -->
+
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-3">PAINDIFFUSION: Can robot express pain?</h2>
+    <div class="video-demo-container">
+      <div class="media-container">
+        <div class="media-wrapper">
+          <h4 class="title is-5">Stimuli Signal</h4>
+          <video id="stimuliVideo">
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p class="error-message" id="stimuliErrorMessage" style="display:none;">Error: Stimuli video could not be loaded. Please check the file path and format.</p>
+        </div>
+        <div class="media-wrapper">
+          <h4 class="title is-5">Predicted Facial Expression</h4>
+          <video id="videoPlayer">
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p class="error-message" id="errorMessage" style="display:none;">Error: Video could not be loaded. Please check the file path and format.</p>
+        </div>
+      </div>
+      <div class="video-controls">
+        <button id="playPauseBtn" class="button is-primary">Play</button>
+        <button id="muteBtn" class="button is-info">Mute</button>
+      </div>
+      <div class="controls">
+        <div class="control-group">
+          <h3 class="title is-5">Stimuli level</h3>
+          <div class="radio-group" id="stimuliGroup"></div>
+        </div>
+        <div class="control-group">
+          <h3 class="title is-5">Expressiveness index</h3>
+          <div class="radio-group" id="expressivenessGroup"></div>
+        </div>
+        <div class="control-group">
+          <h3 class="title is-5">Emotion index</h3>
+          <div class="radio-group" id="emotionGroup"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Paper poster -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">Poster</h2>
+
+      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
+          </iframe>
+        
+      </div>
+    </div>
+  </section>
+<!--End paper poster -->
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>BibTex Code Here</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Default Statcounter code for paindiffusion
+https://damtien444.github.io/paindf/ -->
+<script type="text/javascript">
+  var sc_project=13033010; 
+  var sc_invisible=1; 
+  var sc_security="56492f8b"; 
+  </script>
+  <script type="text/javascript"
+  src="https://www.statcounter.com/counter/counter.js" async></script>
+  <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+  Statcounter" href="https://statcounter.com/" target="_blank"><img
+  class="statcounter" src="https://c.statcounter.com/13033010/0/56492f8b/1/"
+  alt="Web Analytics Made Easy - Statcounter"
+  referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+  <!-- End of Statcounter Code -->
+
+  <script>
+    const videoDirectory = 'demo_video/';
+    const stimuliRange = [1, 2, 3, 4];
+    const expressivenessRange = [5, 6, 7, 8, 9, 10, 11];
+    const emotionMap = {
+      0: 'Anger',
+      1: 'Contempt',
+      2: 'Disgust',
+      3: 'Fear',
+      4: 'Happiness',
+      5: 'Neutral',
+      6: 'Sadness',
+      7: 'Surprise'
+    };
+    let currentVideo = { x: 1, y: 5, z: 0 };
+
+    const stimuliVideo = document.getElementById('stimuliVideo');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const muteBtn = document.getElementById('muteBtn');
+
+    function createRadioButtons(groupId, range, parameter, useLabels = false) {
+      const group = document.getElementById(groupId);
+      range.forEach(value => {
+        const label = document.createElement('label');
+        const displayValue = useLabels ? emotionMap[value] : value;
+        label.innerHTML = `
+          <input type="radio" name="${groupId}" value="${value}" 
+                 ${value === currentVideo[parameter] ? 'checked' : ''}
+                 onchange="updateVideo('${parameter}', ${value})">
+          ${displayValue}
         `;
-                group.appendChild(label);
-            });
-        }
+        group.appendChild(label);
+      });
+    }
 
-        function updateVideo(parameter, value) {
-            currentVideo[parameter] = value;
-            loadMedia();
-        }
+    function updateVideo(parameter, value) {
+      currentVideo[parameter] = value;
+      loadMedia();
+    }
 
-        function loadMedia() {
-            const errorMessage = document.getElementById('errorMessage');
-            const stimuliErrorMessage = document.getElementById('stimuliErrorMessage');
+    function loadMedia() {
+      const errorMessage = document.getElementById('errorMessage');
+      const stimuliErrorMessage = document.getElementById('stimuliErrorMessage');
 
-            const videoFilename = `stimuli_${currentVideo.x}_expressiveness_${currentVideo.y}_emotion_${currentVideo.z}/0.mp4`;
-            const stimuliFilename = `stimuli_${currentVideo.x}.mp4`;
+      const videoFilename = `stimuli_${currentVideo.x}_expressiveness_${currentVideo.y}_emotion_${currentVideo.z}/0.mp4`;
+      const stimuliFilename = `stimuli_${currentVideo.x}.mp4`;
 
-            const videoSrc = videoDirectory + videoFilename;
-            const stimuliSrc = videoDirectory + stimuliFilename;
+      const videoSrc = videoDirectory + videoFilename;
+      const stimuliSrc = videoDirectory + stimuliFilename;
 
-            videoPlayer.src = videoSrc;
-            stimuliVideo.src = stimuliSrc;
+      videoPlayer.src = videoSrc;
+      stimuliVideo.src = stimuliSrc;
 
-            videoPlayer.load();
-            stimuliVideo.load();
+      videoPlayer.load();
+      stimuliVideo.load();
 
-            videoPlayer.onloadeddata = function () {
-                errorMessage.style.display = 'none';
-                playVideos(); // Auto-play when video is loaded
-            };
+      videoPlayer.onloadeddata = function () {
+        errorMessage.style.display = 'none';
+        playVideos();
+      };
 
-            videoPlayer.onerror = function () {
-                errorMessage.style.display = 'block';
-            };
+      videoPlayer.onerror = function () {
+        errorMessage.style.display = 'block';
+      };
 
-            stimuliVideo.onloadeddata = function () {
-                stimuliErrorMessage.style.display = 'none';
-                playVideos(); // Auto-play when video is loaded
-            };
+      stimuliVideo.onloadeddata = function () {
+        stimuliErrorMessage.style.display = 'none';
+        playVideos();
+      };
 
-            stimuliVideo.onerror = function () {
-                stimuliErrorMessage.style.display = 'block';
-            };
-        }
+      stimuliVideo.onerror = function () {
+        stimuliErrorMessage.style.display = 'block';
+      };
+    }
 
-        function playVideos() {
-            const playPromise1 = stimuliVideo.play();
-            const playPromise2 = videoPlayer.play();
+    function playVideos() {
+      const playPromise1 = stimuliVideo.play();
+      const playPromise2 = videoPlayer.play();
 
-            Promise.all([playPromise1, playPromise2]).then(() => {
-                playPauseBtn.textContent = 'Pause';
-            }).catch(error => {
-                console.error("Auto-play was prevented:", error);
-                // Handle auto-play prevention (e.g., show a "Click to play" button)
-            });
-        }
+      Promise.all([playPromise1, playPromise2]).then(() => {
+        playPauseBtn.textContent = 'Pause';
+      }).catch(error => {
+        console.error("Auto-play was prevented:", error);
+      });
+    }
 
-        function togglePlayPause() {
-            if (videoPlayer.paused) {
-                playVideos();
-            } else {
-                stimuliVideo.pause();
-                videoPlayer.pause();
-                playPauseBtn.textContent = 'Play';
-            }
-        }
+    function togglePlayPause() {
+      if (videoPlayer.paused) {
+        playVideos();
+      } else {
+        stimuliVideo.pause();
+        videoPlayer.pause();
+        playPauseBtn.textContent = 'Play';
+      }
+    }
 
-        function toggleMute() {
-            stimuliVideo.muted = !stimuliVideo.muted;
-            videoPlayer.muted = !videoPlayer.muted;
-            muteBtn.textContent = stimuliVideo.muted ? 'Unmute' : 'Mute';
-        }
+    function toggleMute() {
+      stimuliVideo.muted = !stimuliVideo.muted;
+      videoPlayer.muted = !videoPlayer.muted;
+      muteBtn.textContent = stimuliVideo.muted ? 'Unmute' : 'Mute';
+    }
 
-        // Sync video playback
-        stimuliVideo.addEventListener('play', () => videoPlayer.play());
-        stimuliVideo.addEventListener('pause', () => videoPlayer.pause());
-        videoPlayer.addEventListener('play', () => stimuliVideo.play());
-        videoPlayer.addEventListener('pause', () => stimuliVideo.pause());
+    // Sync video playback
+    stimuliVideo.addEventListener('play', () => videoPlayer.play());
+    stimuliVideo.addEventListener('pause', () => videoPlayer.pause());
+    videoPlayer.addEventListener('play', () => stimuliVideo.play());
+    videoPlayer.addEventListener('pause', () => stimuliVideo.pause());
 
-        stimuliVideo.addEventListener('timeupdate', () => {
-            if (Math.abs(stimuliVideo.currentTime - videoPlayer.currentTime) > 0.1) {
-                videoPlayer.currentTime = stimuliVideo.currentTime;
-            }
-        });
+    stimuliVideo.addEventListener('timeupdate', () => {
+      if (Math.abs(stimuliVideo.currentTime - videoPlayer.currentTime) > 0.1) {
+        videoPlayer.currentTime = stimuliVideo.currentTime;
+      }
+    });
 
-        // Initialize radio buttons
-        createRadioButtons('stimuliGroup', stimuliRange, 'x');
-        createRadioButtons('expressivenessGroup', expressivenessRange, 'y');
-        createRadioButtons('emotionGroup', Object.keys(emotionMap), 'z', true);
+    // Initialize radio buttons
+    createRadioButtons('stimuliGroup', stimuliRange, 'x');
+    createRadioButtons('expressivenessGroup', expressivenessRange, 'y');
+    createRadioButtons('emotionGroup', Object.keys(emotionMap), 'z', true);
 
-        // Event listeners for play/pause and mute buttons
-        playPauseBtn.addEventListener('click', togglePlayPause);
-        muteBtn.addEventListener('click', toggleMute);
+    // Event listeners for play/pause and mute buttons
+    playPauseBtn.addEventListener('click', togglePlayPause);
+    muteBtn.addEventListener('click', toggleMute);
 
-        // Load initial media
-        loadMedia();
-    </script>
-</body>
+    // Load initial media
+    loadMedia();
+  </script>
 
-</html>
+  </body>
+  </html>
