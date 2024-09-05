@@ -483,7 +483,7 @@ https://damtien444.github.io/paindf/ -->
     videoPlayer.addEventListener('pause', () => stimuliVideo.pause());
 
     stimuliVideo.addEventListener('timeupdate', () => {
-      if (Math.abs(stimuliVideo.currentTime - videoPlayer.currentTime) > 0.1) {
+      if (Math.abs(stimuliVideo.currentTime - videoPlayer.currentTime) > 0.01) {
         videoPlayer.currentTime = stimuliVideo.currentTime;
       }
     });
@@ -544,7 +544,7 @@ https://damtien444.github.io/paindf/ -->
 
         firstVideo.onloadeddata = function () {
             firstErrorMessage.style.display = 'none';
-            playVideos();
+            playVideos3Videos();
         };
 
         firstVideo.onerror = function () {
@@ -553,7 +553,7 @@ https://damtien444.github.io/paindf/ -->
 
         secondVideo.onloadeddata = function () {
             secondErrorMessage.style.display = 'none';
-            playVideos();
+            playVideos3Videos();
         };
 
         secondVideo.onerror = function () {
@@ -562,7 +562,7 @@ https://damtien444.github.io/paindf/ -->
 
         thirdVideo.onloadeddata = function () {
             thirdErrorMessage.style.display = 'none';
-            playVideos();
+            playVideos3Videos();
         };
 
         thirdVideo.onerror = function () {
@@ -571,7 +571,7 @@ https://damtien444.github.io/paindf/ -->
 
         stimuliVideo3Videos.onloadeddata = function () {
             stimuliErrorMessage3Videos.style.display = 'none';
-            playVideos();
+            playVideos3Videos();
         };
 
         stimuliVideo3Videos.onerror = function () {
@@ -579,7 +579,7 @@ https://damtien444.github.io/paindf/ -->
         };
     }
 
-    function playVideos() {
+    function playVideos3Videos() {
         const playPromise1 = firstVideo.play();
         const playPromise2 = secondVideo.play();
         const playPromise3 = thirdVideo.play();
@@ -592,9 +592,9 @@ https://damtien444.github.io/paindf/ -->
         });
     }
 
-    function togglePlayPause() {
+    function togglePlayPause3Videos() {
         if (firstVideo.paused) {
-            playVideos();
+          playVideos3Videos();
         } else {
             firstVideo.pause();
             secondVideo.pause();
@@ -668,16 +668,19 @@ https://damtien444.github.io/paindf/ -->
     });
 
     firstVideo.addEventListener('timeupdate', () => {
-        if (Math.abs(firstVideo.currentTime - secondVideo.currentTime) > 0.1) {
+        if (Math.abs(firstVideo.currentTime - secondVideo.currentTime) > 0.01) {
             secondVideo.currentTime = firstVideo.currentTime;
         }
-        if (Math.abs(firstVideo.currentTime - thirdVideo.currentTime) > 0.1) {
+        if (Math.abs(firstVideo.currentTime - thirdVideo.currentTime) > 0.01) {
             thirdVideo.currentTime = firstVideo.currentTime;
+        }
+        if (Math.abs(firstVideo.currentTime - stimuliVideo3Videos.currentTime) > 0.01) {
+            stimuliVideo3Videos.currentTime = firstVideo.currentTime;
         }
     });
 
     // Event listeners for controls
-    playPauseBtn3Videos.addEventListener('click', togglePlayPause);
+    playPauseBtn3Videos.addEventListener('click', togglePlayPause3Videos);
     muteBtn3Videos.addEventListener('click', toggleMute);
     document.getElementById('nextBtn').addEventListener('click', nextVideo);
     document.getElementById('prevBtn').addEventListener('click', prevVideo);
