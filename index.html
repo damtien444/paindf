@@ -230,7 +230,7 @@
     <h2 class="title is-3">Output Comparison</h2>
     <div class="media-container">
         <div class="media-wrapper">
-            <h4>Pain Diffusion</h4>
+            <h4 class="title is-5">Pain Diffusion</h4>
             <video id="firstVideo" controls>
                 <source src="comparison/paindiffusion/0.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -240,7 +240,7 @@
             </p>
         </div>
         <div class="media-wrapper">
-            <h4>Ground Truth</h4>
+            <h4 class="title is-5">Ground Truth</h4>
             <video id="secondVideo">
                 <source src="comparison/groundtruth/0.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -250,7 +250,7 @@
             </p>
         </div>
         <div class="media-wrapper">
-            <h4>FSQ-VAE Autoregressive baseline</h4>
+            <h4 class="title is-5">FSQ-VAE Autoregressive baseline</h4>
             <video id="thirdVideo">
                 <source src="comparison/autoregressive/0.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -260,7 +260,17 @@
             </p>
         </div>
         <div class="media-wrapper">
-            <h4>Stimuli Signal</h4>
+          <h4 class="title is-5">PainDiffusion w/o Diffusion Forcing</h4>
+          <video id="forthVideo">
+              <source src="comparison/without_diffusion_forcing/0.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+          <p class="error-message" id="thirdErrorMessage" style="display:none;">
+              Error: Third video could not be loaded. Please check the file path and format.
+          </p>
+      </div>
+        <div class="media-wrapper">
+            <h4 class="title is-5">Stimuli Signal</h4>
             <video id="stimuliVideo3Videos">
                 <source src="comparison/stimuli/0.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -505,6 +515,7 @@ https://damtien444.github.io/paindf/ -->
     const firstVideoDir = "comparison/paindiffusion";
     const secondVideoDir = "comparison/groundtruth";
     const thirdVideoDir = "comparison/autoregressive";
+    const forthVideoDir = "comparison/without_diffusion_forcing";
     const stimuliVideoDir3Videos = "comparison/stimuli"
 
     const maxIdx = 50;  // Set this to the total number of videos you have
@@ -513,6 +524,7 @@ https://damtien444.github.io/paindf/ -->
     const firstVideo = document.getElementById('firstVideo');
     const secondVideo = document.getElementById('secondVideo');
     const thirdVideo = document.getElementById('thirdVideo');
+    const forthVideo = document.getElementById('forthVideo');
     const stimuliVideo3Videos = document.getElementById('stimuliVideo3Videos');
     const playPauseBtn3Videos = document.getElementById('playPauseBtn3Videos');
     const muteBtn3Videos = document.getElementById('muteBtn3Videos');
@@ -523,21 +535,25 @@ https://damtien444.github.io/paindf/ -->
         const firstErrorMessage = document.getElementById('firstErrorMessage');
         const secondErrorMessage = document.getElementById('secondErrorMessage');
         const thirdErrorMessage = document.getElementById('thirdErrorMessage');
+        const forthErrorMessage = document.getElementById('forthErrorMessage');
         const stimuliErrorMessage3Videos = document.getElementById('stimuliErrorMessage3Videos');
 
         const firstVideoSrc = `${firstVideoDir}/${idx}.mp4`;
         const secondVideoSrc = `${secondVideoDir}/${idx}.mp4`;
         const thirdVideoSrc = `${thirdVideoDir}/${idx}.mp4`;
+        const forthVideoSrc = `${forthVideoDir}/${idx}.mp4`;
         const stimuliVideoSrc3Videos = `${stimuliVideoDir3Videos}/${idx}.mp4`;
 
         firstVideo.src = firstVideoSrc;
         secondVideo.src = secondVideoSrc;
         thirdVideo.src = thirdVideoSrc;
+        forthVideo.src = forthVideoSrc;
         stimuliVideo3Videos.src = stimuliVideoSrc3Videos;
 
         firstVideo.load();
         secondVideo.load();
         thirdVideo.load();
+        forthVideo.load();
         stimuliVideo3Videos.load();
 
         videoIndexDisplay.textContent = `Current sample: ${idx + 1}/${maxIdx}`;
@@ -577,6 +593,15 @@ https://damtien444.github.io/paindf/ -->
         stimuliVideo3Videos.onerror = function () {
             stimuliErrorMessage3Videos.style.display = 'block';
         };
+
+        forthVideo.onloadeddata = function () {
+            forthErrorMessage.style.display = 'none';
+            playVideos3Videos();
+        };
+
+        forthVideo.onerror = function () {
+            forthErrorMessage.style.display = 'block';
+        };
     }
 
     function playVideos3Videos() {
@@ -584,8 +609,9 @@ https://damtien444.github.io/paindf/ -->
         const playPromise2 = secondVideo.play();
         const playPromise3 = thirdVideo.play();
         const playPromise4 = stimuliVideo3Videos.play();
+        const playPromise5 = forthVideo.play();
 
-        Promise.all([playPromise1, playPromise2, playPromise3, playPromise4]).then(() => {
+        Promise.all([playPromise1, playPromise2, playPromise3, playPromise4, playPromise5]).then(() => {
             playPauseBtn3Videos.textContent = 'Pause';
         }).catch(error => {
             console.error("Auto-play was prevented:", error);
@@ -599,6 +625,7 @@ https://damtien444.github.io/paindf/ -->
             firstVideo.pause();
             secondVideo.pause();
             thirdVideo.pause();
+            forthVideo.pause();
             stimuliVideo3Videos.pause();
             playPauseBtn3Videos.textContent = 'Play';
         }
@@ -608,6 +635,7 @@ https://damtien444.github.io/paindf/ -->
         firstVideo.muted = !firstVideo.muted;
         secondVideo.muted = !secondVideo.muted;
         thirdVideo.muted = !thirdVideo.muted;
+        forthVideo.muted = !forthVideo.muted;
         stimuliVideo3Videos.muted = !stimuliVideo3Videos.muted;
         muteBtn3Videos.textContent = firstVideo.muted ? 'Unmute' : 'Mute';
     }
@@ -627,44 +655,58 @@ https://damtien444.github.io/paindf/ -->
         secondVideo.play();
         thirdVideo.play();
         stimuliVideo3Videos.play();
+        forthVideo.play();
     });
     firstVideo.addEventListener('pause', () => {
         secondVideo.pause();
         thirdVideo.pause();
         stimuliVideo3Videos.pause();
+        forthVideo.pause();
     });
 
     secondVideo.addEventListener('play', () => {
         firstVideo.play();
         thirdVideo.play();
         stimuliVideo3Videos.play();
+        forthVideo.play();
     });
     secondVideo.addEventListener('pause', () => {
         firstVideo.pause();
         thirdVideo.pause();
         stimuliVideo3Videos.pause();
+        forthVideo.pause();
     });
 
     thirdVideo.addEventListener('play', () => {
         firstVideo.play();
         secondVideo.play();
         stimuliVideo3Videos.play();
+        forthVideo.play();
     });
     thirdVideo.addEventListener('pause', () => {
         firstVideo.pause();
         secondVideo.pause();
         stimuliVideo3Videos.pause();
+        forthVideo.pause();
     });
 
     stimuliVideo3Videos.addEventListener('play', () => {
         firstVideo.play();
         secondVideo.play();
         thirdVideo.play();
+        forthVideo.play();
     });
     stimuliVideo3Videos.addEventListener('pause', () => {
         firstVideo.pause();
         secondVideo.pause();
         thirdVideo.pause();
+        forthVideo.pause();
+    });
+    forthVideo.addEventListener('play', () => {
+        firstVideo.play();
+        secondVideo.play();
+        thirdVideo.play();
+        stimuliVideo3Videos.play();
     });
 
     firstVideo.addEventListener('timeupdate', () => {
@@ -676,6 +718,9 @@ https://damtien444.github.io/paindf/ -->
         }
         if (Math.abs(firstVideo.currentTime - stimuliVideo3Videos.currentTime) > 0.01) {
             stimuliVideo3Videos.currentTime = firstVideo.currentTime;
+        }
+        if (Math.abs(firstVideo.currentTime - forthVideo.currentTime) > 0.01) {
+            forthVideo.currentTime = firstVideo.currentTime;
         }
     });
 
