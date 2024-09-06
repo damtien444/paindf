@@ -240,9 +240,9 @@
             </p>
         </div>
         <div class="media-wrapper">
-            <h4>Pain Diffusion w/o Diffusion Forcing</h4>
+            <h4>Ground Truth</h4>
             <video id="secondVideo">
-                <source src="comparison/without_diffusion_forcing/0.mp4" type="video/mp4">
+                <source src="comparison/groundtruth/0.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <p class="error-message" id="secondErrorMessage" style="display:none;">
@@ -503,11 +503,11 @@ https://damtien444.github.io/paindf/ -->
 
   <script>
     const firstVideoDir = "comparison/paindiffusion";
-    const secondVideoDir = "comparison/without_diffusion_forcing";
+    const secondVideoDir = "comparison/groundtruth";
     const thirdVideoDir = "comparison/autoregressive";
     const stimuliVideoDir3Videos = "comparison/stimuli"
 
-    const maxIdx = 100;  // Set this to the total number of videos you have
+    const maxIdx = 50;  // Set this to the total number of videos you have
     let idx = 1;
 
     const firstVideo = document.getElementById('firstVideo');
