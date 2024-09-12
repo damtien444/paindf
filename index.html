@@ -223,6 +223,14 @@
   </div>
 </section>
 <!-- End paper abstract -->
+<section class="section">
+  <div class="columns is-centered">
+    <h2 class="title is-3">Methodology</h2>
+  </div>
+  <div class="columns is-centered">
+  <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="600" src="https://embed.figma.com/proto/CKW7ytfyvzXzNcBN2TZtBA/PainDiffusion?node-id=106-143&node-type=canvas&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=36%3A554&embed-host=share" allowfullscreen></iframe>
+  </div>
+</section>
 
 <section class="section">
   <div class="container">
@@ -283,13 +291,14 @@
         <button id="prevBtn">Previous</button>
         <button id="playPauseBtn3Videos">Play</button>
         <button id="nextBtn">Next</button>
-        <button id="muteBtn3Videos">Mute</button>
+        <!-- <button id="muteBtn3Videos">Mute</button> -->
     </div>
     <div class="video-index">
       <p id="videoIndexDisplay">Video Index: 1</p>
   </div>
   </div>
 </section>
+
 
 
 <section class="section">
@@ -316,7 +325,7 @@
       </div>
       <div class="video-controls">
         <button id="playPauseBtn" class="button is-primary">Play</button>
-        <button id="muteBtn" class="button is-info">Mute</button>
+        <!-- <button id="muteBtn" class="button is-info">Mute</button> -->
       </div>
       <div class="controls">
         <div class="control-group">
@@ -482,7 +491,7 @@ https://damtien444.github.io/paindf/ -->
     function toggleMute() {
       stimuliVideo.muted = !stimuliVideo.muted;
       videoPlayer.muted = !videoPlayer.muted;
-      muteBtn.textContent = stimuliVideo.muted ? 'Unmute' : 'Mute';
+      // muteBtn.textContent = stimuliVideo.muted ? 'Unmute' : 'Mute'; -->
     }
 
     // Sync video playback
@@ -504,7 +513,7 @@ https://damtien444.github.io/paindf/ -->
 
     // Event listeners for play/pause and mute buttons
     playPauseBtn.addEventListener('click', togglePlayPause);
-    muteBtn.addEventListener('click', toggleMute);
+    // muteBtn.addEventListener('click', toggleMute); -->
 
     // Load initial media
     loadMedia();
@@ -526,7 +535,7 @@ https://damtien444.github.io/paindf/ -->
     const forthVideo = document.getElementById('forthVideo');
     const stimuliVideo3Videos = document.getElementById('stimuliVideo3Videos');
     const playPauseBtn3Videos = document.getElementById('playPauseBtn3Videos');
-    const muteBtn3Videos = document.getElementById('muteBtn3Videos');
+    // const muteBtn3Videos = document.getElementById('muteBtn3Videos');
 
     const videoIndexDisplay = document.getElementById('videoIndexDisplay');
 
@@ -636,7 +645,7 @@ https://damtien444.github.io/paindf/ -->
         thirdVideo.muted = !thirdVideo.muted;
         forthVideo.muted = !forthVideo.muted;
         stimuliVideo3Videos.muted = !stimuliVideo3Videos.muted;
-        muteBtn3Videos.textContent = firstVideo.muted ? 'Unmute' : 'Mute';
+        // muteBtn3Videos.textContent = firstVideo.muted ? 'Unmute' : 'Mute';
     }
 
     function nextVideo() {
@@ -725,7 +734,7 @@ https://damtien444.github.io/paindf/ -->
 
     // Event listeners for controls
     playPauseBtn3Videos.addEventListener('click', togglePlayPause3Videos);
-    muteBtn3Videos.addEventListener('click', toggleMute);
+    /// muteBtn3Videos.addEventListener('click', toggleMute);
     document.getElementById('nextBtn').addEventListener('click', nextVideo);
     document.getElementById('prevBtn').addEventListener('click', prevVideo);
 
