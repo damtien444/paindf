@@ -296,6 +296,7 @@
     <div class="video-index">
       <p id="videoIndexDisplay">Video Index: 1</p>
   </div>
+  <div id="video-info"></div>
   </div>
 </section>
 
@@ -527,7 +528,9 @@ https://damtien444.github.io/paindf/ -->
     const stimuliVideoDir3Videos = "comparison/stimuli"
 
     const maxIdx = 50;  // Set this to the total number of videos you have
-    let idx = 1;
+
+    const idx_list = [4, 6, 7, 9, 10, 11, 12, 14, 17, 18, 22, 27, 28, 29, 32, 33, 34, 36, 37, 38, 39, 43, 45, 46, 50, 51, 52, 53, 56, 57, 58, 60, 63, 66, 67, 68, 72, 76, 78, 82, 85, 86, 87, 89, 90, 95, 97, 100, 103, 106]
+    let idx = 0;
 
     const firstVideo = document.getElementById('firstVideo');
     const secondVideo = document.getElementById('secondVideo');
@@ -539,6 +542,14 @@ https://damtien444.github.io/paindf/ -->
 
     const videoIndexDisplay = document.getElementById('videoIndexDisplay');
 
+    let videoData = [];
+
+    // Load video data from JSON file
+    $.getJSON('val_list_with_old_idx.json', function(data) {
+        videoData = data;
+        loadVideos();
+    });
+
     function loadVideos() {
         const firstErrorMessage = document.getElementById('firstErrorMessage');
         const secondErrorMessage = document.getElementById('secondErrorMessage');
@@ -546,11 +557,23 @@ https://damtien444.github.io/paindf/ -->
         const forthErrorMessage = document.getElementById('forthErrorMessage');
         const stimuliErrorMessage3Videos = document.getElementById('stimuliErrorMessage3Videos');
 
-        const firstVideoSrc = `${firstVideoDir}/${idx}.mp4`;
-        const secondVideoSrc = `${secondVideoDir}/${idx}.mp4`;
-        const thirdVideoSrc = `${thirdVideoDir}/${idx}.mp4`;
-        const forthVideoSrc = `${forthVideoDir}/${idx}.mp4`;
-        const stimuliVideoSrc3Videos = `${stimuliVideoDir3Videos}/${idx}.mp4`;
+        real_idx = idx_list[idx];
+        const firstVideoSrc = `${firstVideoDir}/${real_idx}.mp4`;
+        const secondVideoSrc = `${secondVideoDir}/${real_idx}.mp4`;
+        const thirdVideoSrc = `${thirdVideoDir}/${real_idx}.mp4`;
+        const forthVideoSrc = `${forthVideoDir}/${real_idx}.mp4`;
+        const stimuliVideoSrc3Videos = `${stimuliVideoDir3Videos}/${real_idx}.mp4`;
+        const currentVideoInfo = videoData[real_idx];
+
+        $('#video-info').html(`
+        <div class="video-info">
+          <p><strong>Video Name:</strong> ${currentVideoInfo.video_name},
+          <strong>Start Frame:</strong> ${currentVideoInfo.start_frame},
+          <strong>End Frame:</strong> ${currentVideoInfo.end_frame},
+          <strong>Emotion:</strong> <em>${emotionMap[Math.round(currentVideoInfo.emotion)]}</em>,
+          <strong>Pain Expressiveness:</strong> <em>${currentVideoInfo.pain_expressiveness}</em>.</p>
+        </div>
+        `);
 
         firstVideo.src = firstVideoSrc;
         secondVideo.src = secondVideoSrc;
