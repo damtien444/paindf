@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
   <meta name="description" content="PainDiffusion">
-  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG" />
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG" />
+  <meta property="og:url" content="URL OF THE WEBSITE" />
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
   <meta property="og:image" content="static/image/your_banner_image.png" />
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
 
   <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
@@ -26,15 +27,13 @@
 
   <title>PainDiffusion</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-  rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -53,55 +52,87 @@
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
     .media-container {
       display: flex;
       justify-content: space-between;
       margin-bottom: 20px;
     }
+
     .media-wrapper {
       flex: 1;
       margin-right: 20px;
       text-align: center;
     }
+
     .media-wrapper:last-child {
       margin-right: 0;
     }
+
     .video-demo-container video {
       width: 100%;
       height: auto;
       border-radius: 8px;
       margin-bottom: 10px;
     }
+
     .controls {
       display: flex;
       justify-content: space-between;
       margin-bottom: 20px;
     }
+
     .control-group {
       flex: 1;
       margin-right: 10px;
     }
+
     .control-group:last-child {
       margin-right: 0;
     }
+
     .radio-group {
       display: flex;
       flex-direction: column;
     }
+
     .error-message {
       color: red;
       font-style: italic;
       text-align: center;
     }
+
     .video-controls {
       display: flex;
       justify-content: center;
       margin-top: 10px;
     }
+
     .video-controls button {
       margin: 0 5px;
       padding: 5px 10px;
       cursor: pointer;
+    }
+    .image-table {
+      width: 100%;
+    }
+    .row {
+      margin-bottom: 20px;
+    }
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+      justify-items: center;
+    }
+    .image-item {
+      text-align: center;
+    }
+    .controllable-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
     }
   </style>
 
@@ -121,26 +152,27 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=1XCWOmMAAAAJ" target="_blank">Quang-Tien Dam</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="http://www.aislab.org/" target="_blank">Tri Tung Nguyen Nguyen</a>,</span>
-                  <span class="author-block">
-                    <a href="http://www.aislab.org/" target="_blank">Dinh Tuan Tran</a>,</span>
-                  </span>
-                  <span class="author-block">
-                    <a href="http://www.aislab.org/" target="_blank">Joo-Ho Lee</a>
-                  </span>
-                  </div>
+                <a href="https://scholar.google.com/citations?user=1XCWOmMAAAAJ" target="_blank">Quang-Tien
+                  Dam</a><sup>*</sup>,</span>
+              <span class="author-block">
+                <a href="http://www.aislab.org/" target="_blank">Tri Tung Nguyen Nguyen</a>,</span>
+              <span class="author-block">
+                <a href="http://www.aislab.org/" target="_blank">Dinh Tuan Tran</a>,</span>
+              </span>
+              <span class="author-block">
+                <a href="http://www.aislab.org/" target="_blank">Joo-Ho Lee</a>
+              </span>
+            </div>
 
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block">Ritsumeikan University<br>ICRA 2025</span>
-                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
-                  </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Ritsumeikan University<br>ICRA 2025</span>
+              <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+            </div>
 
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <!-- <span class="link-block">
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                <!-- <span class="link-block">
                         <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
@@ -150,8 +182,8 @@
                       </a>
                     </span> -->
 
-                    <!-- Supplementary PDF link -->
-                    <!-- <span class="link-block">
+                <!-- Supplementary PDF link -->
+                <!-- <span class="link-block">
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
@@ -161,9 +193,9 @@
                     </a>
                   </span> -->
 
-                  <!-- Github link -->
-                  <span class="link-block">
-                    <a href="https://github.com/ais-lab" target="_blank"
+                <!-- Github link -->
+                <span class="link-block">
+                  <a href="https://github.com/ais-lab" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -182,214 +214,358 @@
                   <span>arXiv</span>
                 </a>
               </span> -->
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- Teaser video-->
-<!-- <section class="hero teaser"> -->
+  <!-- Teaser video-->
+  <!-- <section class="hero teaser"> -->
   <!-- <div class="container is-max-desktop"> -->
-    <!-- <div class="hero-body"> -->
-      <!-- <video poster="" id="tree" autoplay controls muted loop height="100%"> -->
-        <!-- Your video here -->
-        <!-- <source src="static/videos/banner_video.mp4" -->
-        <!-- type="video/mp4"> -->
-      <!-- </video> -->
-      <!-- <h2 class="subtitle has-text-centered"> -->
-        <!-- Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus.  -->
-      <!-- </h2> -->
-    <!-- </div> -->
+  <!-- <div class="hero-body"> -->
+  <!-- <video poster="" id="tree" autoplay controls muted loop height="100%"> -->
+  <!-- Your video here -->
+  <!-- <source src="static/videos/banner_video.mp4" -->
+  <!-- type="video/mp4"> -->
+  <!-- </video> -->
+  <!-- <h2 class="subtitle has-text-centered"> -->
+  <!-- Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus.  -->
+  <!-- </h2> -->
   <!-- </div> -->
-<!-- </section> -->
-<!-- End teaser video -->
+  <!-- </div> -->
+  <!-- </section> -->
+  <!-- End teaser video -->
 
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Pain is a more intuitive and user-friendly way of communicating problems, making it especially useful in rehabilitation nurse training robots. While most previous methods have focused on classifying or recognizing pain expressions, we introduce PainDiffusion, a model that generates facial expressions in response to pain stimuli, with controllable expressiveness and emotion status. PainDiffusion utilizes diffusion forcing to roll out predictions over arbitrary lengths using a conditioned temporal U-Net. It operates as a latent diffusion model within EMOCA's facial expression latent space. For training, we process the BioVid Heatpain Database, extracting expression codes and subject identity configurations. We also propose a novel set of metrics to evaluate pain expressions, covering expressiveness, diversity, and the appropriateness of model-generated outputs. Finally, we demonstrate that PainDiffusion outperforms the autoregressive method, both qualitatively and quantitatively.          </p>
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Pain is a more intuitive and user-friendly way of communicating problems, making it especially useful in
+              rehabilitation nurse training robots. While most previous methods have focused on classifying or
+              recognizing pain expressions, we introduce PainDiffusion, a model that generates facial expressions in
+              response to pain stimuli, with controllable expressiveness and emotion status. PainDiffusion utilizes
+              diffusion forcing to roll out predictions over arbitrary lengths using a conditioned temporal U-Net. It
+              operates as a latent diffusion model within EMOCA's facial expression latent space. For training, we
+              process the BioVid Heatpain Database, extracting expression codes and subject identity configurations. We
+              also propose a novel set of metrics to evaluate pain expressions, covering expressiveness, diversity, and
+              the appropriateness of model-generated outputs. Finally, we demonstrate that PainDiffusion outperforms the
+              autoregressive method, both qualitatively and quantitatively. </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- End paper abstract -->
-<section class="section">
-  <div class="columns is-centered">
-    <h2 class="title is-3">Methodology</h2>
-  </div>
-  <div class="columns is-centered">
+  </section>
+  <!-- End paper abstract -->
+  <section class="section">
+    <div class="columns is-centered">
+      <h2 class="title is-3">Methodology</h2>
+    </div>
+    <div class="columns is-centered">
   <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="600" src="https://embed.figma.com/proto/CKW7ytfyvzXzNcBN2TZtBA/PainDiffusion?node-id=106-143&node-type=canvas&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=36%3A554&embed-host=share" allowfullscreen></iframe>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h2 class="title is-3">Output Comparison</h2>
-    <div class="media-container">
-        <div class="media-wrapper">
-            <h4 class="title is-5">Pain Diffusion</h4>
-            <video id="firstVideo" controls>
-                <source src="comparison/paindiffusion/0.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p class="error-message" id="firstErrorMessage" style="display:none;">
-                Error: First video could not be loaded. Please check the file path and format.
-            </p>
-        </div>
-        <div class="media-wrapper">
-            <h4 class="title is-5">Ground Truth</h4>
-            <video id="secondVideo">
-                <source src="comparison/groundtruth/0.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p class="error-message" id="secondErrorMessage" style="display:none;">
-                Error: Second video could not be loaded. Please check the file path and format.
-            </p>
-        </div>
-        <div class="media-wrapper">
-            <h4 class="title is-5">FSQ-VAE Autoregressive baseline</h4>
-            <video id="thirdVideo">
-                <source src="comparison/autoregressive/0.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p class="error-message" id="thirdErrorMessage" style="display:none;">
-                Error: Third video could not be loaded. Please check the file path and format.
-            </p>
-        </div>
-        <div class="media-wrapper">
-          <h4 class="title is-5">PainDiffusion w/o Diffusion Forcing</h4>
-          <video id="forthVideo">
-              <source src="comparison/without_diffusion_forcing/0.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-          </video>
-          <p class="error-message" id="thirdErrorMessage" style="display:none;">
-              Error: Third video could not be loaded. Please check the file path and format.
-          </p>
-      </div>
-        <div class="media-wrapper">
-            <h4 class="title is-5">Stimuli Signal</h4>
-            <video id="stimuliVideo3Videos">
-                <source src="comparison/stimuli/0.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p class="error-message" id="stimuliErrorMessage3Videos" style="display:none;">
-                Error: Stimuli video could not be loaded. Please check the file path and format.
-            </p>
-        </div>
     </div>
-    <div class="video-controls">
-        <button id="prevBtn">Previous</button>
-        <button id="playPauseBtn3Videos">Play</button>
-        <button id="nextBtn">Next</button>
-        <!-- <button id="muteBtn3Videos">Mute</button> -->
-    </div>
-    <div class="video-index">
-      <p id="videoIndexDisplay">Video Index: 1</p>
-  </div>
-  <div id="video-info"></div>
-  </div>
-</section>
+  </section>
 
-
-
-<section class="section">
-  <div class="container">
-    <h2 class="title is-3">Controlability Experiment</h2>
-    <div class="video-demo-container">
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-3">Output Comparison</h2>
       <div class="media-container">
         <div class="media-wrapper">
-          <h4 class="title is-5">Stimuli Signal</h4>
-          <video id="stimuliVideo">
-            <source src="" type="video/mp4">
+          <h4 class="title is-5">Pain Diffusion</h4>
+          <video id="firstVideo" controls>
+            <source src="comparison/paindiffusion/0.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
-          <p class="error-message" id="stimuliErrorMessage" style="display:none;">Error: Stimuli video could not be loaded. Please check the file path and format.</p>
+          <p class="error-message" id="firstErrorMessage" style="display:none;">
+            Error: First video could not be loaded. Please check the file path and format.
+          </p>
         </div>
         <div class="media-wrapper">
-          <h4 class="title is-5">Predicted Facial Expression</h4>
-          <video id="videoPlayer">
-            <source src="" type="video/mp4">
+          <h4 class="title is-5">Ground Truth</h4>
+          <video id="secondVideo">
+            <source src="comparison/groundtruth/0.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
-          <p class="error-message" id="errorMessage" style="display:none;">Error: Video could not be loaded. Please check the file path and format.</p>
+          <p class="error-message" id="secondErrorMessage" style="display:none;">
+            Error: Second video could not be loaded. Please check the file path and format.
+          </p>
+        </div>
+        <div class="media-wrapper">
+          <h4 class="title is-5">FSQ-VAE Autoregressive baseline</h4>
+          <video id="thirdVideo">
+            <source src="comparison/autoregressive/0.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p class="error-message" id="thirdErrorMessage" style="display:none;">
+            Error: Third video could not be loaded. Please check the file path and format.
+          </p>
+        </div>
+        <div class="media-wrapper">
+          <h4 class="title is-5">PainDiffusion w/ Full-seq Diffusion</h4>
+          <video id="forthVideo">
+            <source src="comparison/without_diffusion_forcing/0.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p class="error-message" id="thirdErrorMessage" style="display:none;">
+            Error: Third video could not be loaded. Please check the file path and format.
+          </p>
+        </div>
+        <div class="media-wrapper">
+          <h4 class="title is-5">Stimuli Signal</h4>
+          <video id="stimuliVideo3Videos">
+            <source src="comparison/stimuli/0.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p class="error-message" id="stimuliErrorMessage3Videos" style="display:none;">
+            Error: Stimuli video could not be loaded. Please check the file path and format.
+          </p>
         </div>
       </div>
       <div class="video-controls">
-        <button id="playPauseBtn" class="button is-primary">Play</button>
-        <!-- <button id="muteBtn" class="button is-info">Mute</button> -->
+        <button id="prevBtn" class="button is-primary">Previous</button>
+        <button id="playPauseBtn3Videos" class="button is-primary">Play</button>
+        <button id="nextBtn" class="button is-primary">Next</button>
+        <!-- <button id="muteBtn3Videos">Mute</button> -->
       </div>
-      <div class="controls">
-        <div class="control-group">
-          <h3 class="title is-5">Stimuli level</h3>
-          <div class="radio-group" id="stimuliGroup"></div>
+      <div>
+        <p>We randomly sample from the validation set and compare the output of different baselines.</p>
+      </div>
+      <div class="video-index">
+        <p id="videoIndexDisplay">Video Index: 1</p>
+      </div>
+      <div id="video-info"></div>
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-3">Controlability Experiment</h2>
+      <div>
+        <div class="media-container">
+          <div class="media-wrapper">
+            <h4 class="title is-5">Stimuli Signal</h4>
+            <video id="stimuliVideo">
+              <source src="" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <p class="error-message" id="stimuliErrorMessage" style="display:none;">Error: Stimuli video could not be
+              loaded. Please check the file path and format.</p>
+          </div>
+          <div class="media-wrapper">
+            <h4 class="title is-5">Predicted Facial Expression</h4>
+            <video id="videoPlayer">
+              <source src="" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <p class="error-message" id="errorMessage" style="display:none;">Error: Video could not be loaded. Please
+              check the file path and format.</p>
+          </div>
         </div>
-        <div class="control-group">
-          <h3 class="title is-5">Expressiveness index</h3>
-          <div class="radio-group" id="expressivenessGroup"></div>
+        <div class="video-controls">
+          <button id="playPauseBtn" class="button is-primary">Play</button>
+          <!-- <button id="muteBtn" class="button is-info">Mute</button> -->
         </div>
-        <div class="control-group">
-          <h3 class="title is-5">Emotion index</h3>
-          <div class="radio-group" id="emotionGroup"></div>
+        <div class="controls">
+          <div class="control-group">
+            <h3 class="title is-5">Stimuli level</h3>
+            <div class="radio-group" id="stimuliGroup"></div>
+          </div>
+          <div class="control-group">
+            <h3 class="title is-5">Expressiveness index</h3>
+            <div class="radio-group" id="expressivenessGroup"></div>
+          </div>
+          <div class="control-group">
+            <h3 class="title is-5">Emotion index</h3>
+            <div class="radio-group" id="emotionGroup"></div>
+          </div>
         </div>
+            <div class="title is-4">The area of movement for each controllable condition.</div>
+            <div class="image-table">
+              <div class="row">
+                <h4 class="title is-5">Emotion</h4>
+                <div class="image-grid">
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/emotion_0_movement.png" alt="Anger">
+                    <p>Anger</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/emotion_1_movement.png" alt="Contempt">
+                    <p>Contempt</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/emotion_2_movement.png" alt="Disgust">
+                    <p>Disgust</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/emotion_3_movement.png" alt="Fear">
+                    <p>Fear</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/emotion_4_movement.png" alt="Happiness">
+                    <p>Happiness</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/emotion_5_movement.png" alt="Neutral">
+                    <p>Neutral</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/emotion_6_movement.png" alt="Sadness">
+                    <p>Sadness</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/emotion_7_movement.png" alt="Surprise">
+                    <p>Surprise</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <h4 class="title is-5">Stimuli</h4>
+                <div class="image-grid">
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/stimuli_1_movement.png" alt="Stimuli 1">
+                    <p>Stimuli 1</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/stimuli_2_movement.png" alt="Stimuli 2">
+                    <p>Stimuli 2</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/stimuli_3_movement.png" alt="Stimuli 3">
+                    <p>Stimuli 3</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/stimuli_4_movement.png" alt="Stimuli 4">
+                    <p>Stimuli 4</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <h4 class="title is-5">Expressiveness</h4>
+                <div class="image-grid">
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/expressiveness_5_movement.png" alt="Expressiveness 5">
+                    <p>Expressiveness 5</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/expressiveness_6_movement.png" alt="Expressiveness 6">
+                    <p>Expressiveness 6</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/expressiveness_7_movement.png" alt="Expressiveness 7">
+                    <p>Expressiveness 7</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/expressiveness_8_movement.png" alt="Expressiveness 8">
+                    <p>Expressiveness 8</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/expressiveness_9_movement.png" alt="Expressiveness 9">
+                    <p>Expressiveness 9</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/expressiveness_10_movement.png" alt="Expressiveness 10">
+                    <p>Expressiveness 10</p>
+                  </div>
+                  <div class="image-item">
+                    <img class="controllable-image" src="static/images/controllability/expressiveness_11_movement.png" alt="Expressiveness 11">
+                    <p>Expressiveness 11</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-3">Dataset Analysis</h2>
+      <div class="content">
+        <p>For every chunk of video in the training dataset, we compute the average value of pain expressiveness, emotion configuration and maximum of stimulus value. We plot histogram of 50 bins to check their distributions.</p>
+        <!-- Add your dataset analysis content here -->
+        <div class="columns">
+          <div class="column">
+            <figure class="image">
+              <img src="static/images/average_expressiveness_ditribution.png" alt="Pain Expressiveness">
+              <figcaption>Pain Expressiveness</figcaption>
+            </figure>
+          </div>
+          <div class="column">
+            <figure class="image">
+              <img src="static/images/average_stimulus_ditribution.png" alt="Stimulus">
+              <figcaption>Stimulus</figcaption>
+            </figure>
+          </div>
+          <div class="column">
+            <figure class="image">
+              <img src="static/images/emotion_distribution.png" alt="Emotion">
+              <figcaption>Emotion</figcaption>
+            </figure>
+          </div>
+        </div>
+        <p>The BioVid Heatpain part C contains pain expressiveness mostly in the range of 7 to 10, while there's a small group of video chunks that have pain expressiveness above 10. In terms of maximum stimulus value, most of them focus on the range from 48 degrees Celsius to 52. The average emotion distribution indicates that many samples are neutral, sad or contempt.</p>
+      </div>
+    </div>
+  </section>
 
 
-
-<!--BibTex citation -->
+  <!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>BibTex Code Here</code></pre>
     </div>
-</section>
-<!--End BibTex citation -->
+  </section>
+  <!--End BibTex citation -->
 
 
   <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
 
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              <br> This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
 
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- Default Statcounter code for paindiffusion
+  <!-- Default Statcounter code for paindiffusion
 https://damtien444.github.io/paindf/ -->
-<script type="text/javascript">
-  var sc_project=13033010; 
-  var sc_invisible=1; 
-  var sc_security="56492f8b"; 
+  <script type="text/javascript">
+    var sc_project = 13033010;
+    var sc_invisible = 1;
+    var sc_security = "56492f8b"; 
   </script>
-  <script type="text/javascript"
-  src="https://www.statcounter.com/counter/counter.js" async></script>
-  <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
-  Statcounter" href="https://statcounter.com/" target="_blank"><img
-  class="statcounter" src="https://c.statcounter.com/13033010/0/56492f8b/1/"
-  alt="Web Analytics Made Easy - Statcounter"
-  referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+  <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+  <noscript>
+    <div class="statcounter"><a title="Web Analytics Made Easy -
+  Statcounter" href="https://statcounter.com/" target="_blank"><img class="statcounter"
+          src="https://c.statcounter.com/13033010/0/56492f8b/1/" alt="Web Analytics Made Easy - Statcounter"
+          referrerPolicy="no-referrer-when-downgrade"></a></div>
+  </noscript>
   <!-- End of Statcounter Code -->
 
   <script>
@@ -420,7 +596,7 @@ https://damtien444.github.io/paindf/ -->
         const displayValue = useLabels ? emotionMap[value] : value;
         label.innerHTML = `
           <input type="radio" name="${groupId}" value="${value}" 
-                 ${value === currentVideo[parameter] ? 'checked' : ''}
+                 ${value === (currentVideo[parameter] || range[0]) ? 'checked' : ''}
                  onchange="updateVideo('${parameter}', ${value})">
           ${displayValue}
         `;
@@ -545,27 +721,27 @@ https://damtien444.github.io/paindf/ -->
     let videoData = [];
 
     // Load video data from JSON file
-    $.getJSON('val_list_with_old_idx.json', function(data) {
-        videoData = data;
-        loadVideos();
+    $.getJSON('val_list_with_old_idx.json', function (data) {
+      videoData = data;
+      loadVideos();
     });
 
     function loadVideos() {
-        const firstErrorMessage = document.getElementById('firstErrorMessage');
-        const secondErrorMessage = document.getElementById('secondErrorMessage');
-        const thirdErrorMessage = document.getElementById('thirdErrorMessage');
-        const forthErrorMessage = document.getElementById('forthErrorMessage');
-        const stimuliErrorMessage3Videos = document.getElementById('stimuliErrorMessage3Videos');
+      const firstErrorMessage = document.getElementById('firstErrorMessage');
+      const secondErrorMessage = document.getElementById('secondErrorMessage');
+      const thirdErrorMessage = document.getElementById('thirdErrorMessage');
+      const forthErrorMessage = document.getElementById('forthErrorMessage');
+      const stimuliErrorMessage3Videos = document.getElementById('stimuliErrorMessage3Videos');
 
-        real_idx = idx_list[idx];
-        const firstVideoSrc = `${firstVideoDir}/${real_idx}.mp4`;
-        const secondVideoSrc = `${secondVideoDir}/${real_idx}.mp4`;
-        const thirdVideoSrc = `${thirdVideoDir}/${real_idx}.mp4`;
-        const forthVideoSrc = `${forthVideoDir}/${real_idx}.mp4`;
-        const stimuliVideoSrc3Videos = `${stimuliVideoDir3Videos}/${real_idx}.mp4`;
-        const currentVideoInfo = videoData[real_idx];
+      real_idx = idx_list[idx];
+      const firstVideoSrc = `${firstVideoDir}/${real_idx}.mp4`;
+      const secondVideoSrc = `${secondVideoDir}/${real_idx}.mp4`;
+      const thirdVideoSrc = `${thirdVideoDir}/${real_idx}.mp4`;
+      const forthVideoSrc = `${forthVideoDir}/${real_idx}.mp4`;
+      const stimuliVideoSrc3Videos = `${stimuliVideoDir3Videos}/${real_idx}.mp4`;
+      const currentVideoInfo = videoData[real_idx];
 
-        $('#video-info').html(`
+      $('#video-info').html(`
         <div class="video-info">
           <p><strong>Video Name:</strong> ${currentVideoInfo.video_name},
           <strong>Start Frame:</strong> ${currentVideoInfo.start_frame},
@@ -575,184 +751,184 @@ https://damtien444.github.io/paindf/ -->
         </div>
         `);
 
-        firstVideo.src = firstVideoSrc;
-        secondVideo.src = secondVideoSrc;
-        thirdVideo.src = thirdVideoSrc;
-        forthVideo.src = forthVideoSrc;
-        stimuliVideo3Videos.src = stimuliVideoSrc3Videos;
+      firstVideo.src = firstVideoSrc;
+      secondVideo.src = secondVideoSrc;
+      thirdVideo.src = thirdVideoSrc;
+      forthVideo.src = forthVideoSrc;
+      stimuliVideo3Videos.src = stimuliVideoSrc3Videos;
 
-        firstVideo.load();
-        secondVideo.load();
-        thirdVideo.load();
-        forthVideo.load();
-        stimuliVideo3Videos.load();
+      firstVideo.load();
+      secondVideo.load();
+      thirdVideo.load();
+      forthVideo.load();
+      stimuliVideo3Videos.load();
 
-        videoIndexDisplay.textContent = `Current sample: ${idx + 1}/${maxIdx}`;
+      videoIndexDisplay.textContent = `Current sample: ${idx + 1}/${maxIdx}`;
 
-        firstVideo.onloadeddata = function () {
-            firstErrorMessage.style.display = 'none';
-            playVideos3Videos();
-        };
+      firstVideo.onloadeddata = function () {
+        firstErrorMessage.style.display = 'none';
+        playVideos3Videos();
+      };
 
-        firstVideo.onerror = function () {
-            firstErrorMessage.style.display = 'block';
-        };
+      firstVideo.onerror = function () {
+        firstErrorMessage.style.display = 'block';
+      };
 
-        secondVideo.onloadeddata = function () {
-            secondErrorMessage.style.display = 'none';
-            playVideos3Videos();
-        };
+      secondVideo.onloadeddata = function () {
+        secondErrorMessage.style.display = 'none';
+        playVideos3Videos();
+      };
 
-        secondVideo.onerror = function () {
-            secondErrorMessage.style.display = 'block';
-        };
+      secondVideo.onerror = function () {
+        secondErrorMessage.style.display = 'block';
+      };
 
-        thirdVideo.onloadeddata = function () {
-            thirdErrorMessage.style.display = 'none';
-            playVideos3Videos();
-        };
+      thirdVideo.onloadeddata = function () {
+        thirdErrorMessage.style.display = 'none';
+        playVideos3Videos();
+      };
 
-        thirdVideo.onerror = function () {
-            thirdErrorMessage.style.display = 'block';
-        };
+      thirdVideo.onerror = function () {
+        thirdErrorMessage.style.display = 'block';
+      };
 
-        stimuliVideo3Videos.onloadeddata = function () {
-            stimuliErrorMessage3Videos.style.display = 'none';
-            playVideos3Videos();
-        };
+      stimuliVideo3Videos.onloadeddata = function () {
+        stimuliErrorMessage3Videos.style.display = 'none';
+        playVideos3Videos();
+      };
 
-        stimuliVideo3Videos.onerror = function () {
-            stimuliErrorMessage3Videos.style.display = 'block';
-        };
+      stimuliVideo3Videos.onerror = function () {
+        stimuliErrorMessage3Videos.style.display = 'block';
+      };
 
-        forthVideo.onloadeddata = function () {
-            forthErrorMessage.style.display = 'none';
-            playVideos3Videos();
-        };
+      forthVideo.onloadeddata = function () {
+        forthErrorMessage.style.display = 'none';
+        playVideos3Videos();
+      };
 
-        forthVideo.onerror = function () {
-            forthErrorMessage.style.display = 'block';
-        };
+      forthVideo.onerror = function () {
+        forthErrorMessage.style.display = 'block';
+      };
     }
 
     function playVideos3Videos() {
-        const playPromise1 = firstVideo.play();
-        const playPromise2 = secondVideo.play();
-        const playPromise3 = thirdVideo.play();
-        const playPromise4 = stimuliVideo3Videos.play();
-        const playPromise5 = forthVideo.play();
+      const playPromise1 = firstVideo.play();
+      const playPromise2 = secondVideo.play();
+      const playPromise3 = thirdVideo.play();
+      const playPromise4 = stimuliVideo3Videos.play();
+      const playPromise5 = forthVideo.play();
 
-        Promise.all([playPromise1, playPromise2, playPromise3, playPromise4, playPromise5]).then(() => {
-            playPauseBtn3Videos.textContent = 'Pause';
-        }).catch(error => {
-            console.error("Auto-play was prevented:", error);
-        });
+      Promise.all([playPromise1, playPromise2, playPromise3, playPromise4, playPromise5]).then(() => {
+        playPauseBtn3Videos.textContent = 'Pause';
+      }).catch(error => {
+        console.error("Auto-play was prevented:", error);
+      });
     }
 
     function togglePlayPause3Videos() {
-        if (firstVideo.paused) {
-          playVideos3Videos();
-        } else {
-            firstVideo.pause();
-            secondVideo.pause();
-            thirdVideo.pause();
-            forthVideo.pause();
-            stimuliVideo3Videos.pause();
-            playPauseBtn3Videos.textContent = 'Play';
-        }
+      if (firstVideo.paused) {
+        playVideos3Videos();
+      } else {
+        firstVideo.pause();
+        secondVideo.pause();
+        thirdVideo.pause();
+        forthVideo.pause();
+        stimuliVideo3Videos.pause();
+        playPauseBtn3Videos.textContent = 'Play';
+      }
     }
 
     function toggleMute() {
-        firstVideo.muted = !firstVideo.muted;
-        secondVideo.muted = !secondVideo.muted;
-        thirdVideo.muted = !thirdVideo.muted;
-        forthVideo.muted = !forthVideo.muted;
-        stimuliVideo3Videos.muted = !stimuliVideo3Videos.muted;
-        // muteBtn3Videos.textContent = firstVideo.muted ? 'Unmute' : 'Mute';
+      firstVideo.muted = !firstVideo.muted;
+      secondVideo.muted = !secondVideo.muted;
+      thirdVideo.muted = !thirdVideo.muted;
+      forthVideo.muted = !forthVideo.muted;
+      stimuliVideo3Videos.muted = !stimuliVideo3Videos.muted;
+      // muteBtn3Videos.textContent = firstVideo.muted ? 'Unmute' : 'Mute';
     }
 
     function nextVideo() {
-        idx = (idx + 1) % maxIdx;  // Increment index and wrap around using modulo
-        loadVideos();
+      idx = (idx + 1) % maxIdx;  // Increment index and wrap around using modulo
+      loadVideos();
     }
 
     function prevVideo() {
-        idx = (idx - 1 + maxIdx) % maxIdx;  // Decrement index and wrap around using modulo
-        loadVideos();
+      idx = (idx - 1 + maxIdx) % maxIdx;  // Decrement index and wrap around using modulo
+      loadVideos();
     }
 
     // Sync video playback
     firstVideo.addEventListener('play', () => {
-        secondVideo.play();
-        thirdVideo.play();
-        stimuliVideo3Videos.play();
-        forthVideo.play();
+      secondVideo.play();
+      thirdVideo.play();
+      stimuliVideo3Videos.play();
+      forthVideo.play();
     });
     firstVideo.addEventListener('pause', () => {
-        secondVideo.pause();
-        thirdVideo.pause();
-        stimuliVideo3Videos.pause();
-        forthVideo.pause();
+      secondVideo.pause();
+      thirdVideo.pause();
+      stimuliVideo3Videos.pause();
+      forthVideo.pause();
     });
 
     secondVideo.addEventListener('play', () => {
-        firstVideo.play();
-        thirdVideo.play();
-        stimuliVideo3Videos.play();
-        forthVideo.play();
+      firstVideo.play();
+      thirdVideo.play();
+      stimuliVideo3Videos.play();
+      forthVideo.play();
     });
     secondVideo.addEventListener('pause', () => {
-        firstVideo.pause();
-        thirdVideo.pause();
-        stimuliVideo3Videos.pause();
-        forthVideo.pause();
+      firstVideo.pause();
+      thirdVideo.pause();
+      stimuliVideo3Videos.pause();
+      forthVideo.pause();
     });
 
     thirdVideo.addEventListener('play', () => {
-        firstVideo.play();
-        secondVideo.play();
-        stimuliVideo3Videos.play();
-        forthVideo.play();
+      firstVideo.play();
+      secondVideo.play();
+      stimuliVideo3Videos.play();
+      forthVideo.play();
     });
     thirdVideo.addEventListener('pause', () => {
-        firstVideo.pause();
-        secondVideo.pause();
-        stimuliVideo3Videos.pause();
-        forthVideo.pause();
+      firstVideo.pause();
+      secondVideo.pause();
+      stimuliVideo3Videos.pause();
+      forthVideo.pause();
     });
 
     stimuliVideo3Videos.addEventListener('play', () => {
-        firstVideo.play();
-        secondVideo.play();
-        thirdVideo.play();
-        forthVideo.play();
+      firstVideo.play();
+      secondVideo.play();
+      thirdVideo.play();
+      forthVideo.play();
     });
     stimuliVideo3Videos.addEventListener('pause', () => {
-        firstVideo.pause();
-        secondVideo.pause();
-        thirdVideo.pause();
-        forthVideo.pause();
+      firstVideo.pause();
+      secondVideo.pause();
+      thirdVideo.pause();
+      forthVideo.pause();
     });
     forthVideo.addEventListener('play', () => {
-        firstVideo.play();
-        secondVideo.play();
-        thirdVideo.play();
-        stimuliVideo3Videos.play();
+      firstVideo.play();
+      secondVideo.play();
+      thirdVideo.play();
+      stimuliVideo3Videos.play();
     });
 
     firstVideo.addEventListener('timeupdate', () => {
-        if (Math.abs(firstVideo.currentTime - secondVideo.currentTime) > 0.01) {
-            secondVideo.currentTime = firstVideo.currentTime;
-        }
-        if (Math.abs(firstVideo.currentTime - thirdVideo.currentTime) > 0.01) {
-            thirdVideo.currentTime = firstVideo.currentTime;
-        }
-        if (Math.abs(firstVideo.currentTime - stimuliVideo3Videos.currentTime) > 0.01) {
-            stimuliVideo3Videos.currentTime = firstVideo.currentTime;
-        }
-        if (Math.abs(firstVideo.currentTime - forthVideo.currentTime) > 0.01) {
-            forthVideo.currentTime = firstVideo.currentTime;
-        }
+      if (Math.abs(firstVideo.currentTime - secondVideo.currentTime) > 0.01) {
+        secondVideo.currentTime = firstVideo.currentTime;
+      }
+      if (Math.abs(firstVideo.currentTime - thirdVideo.currentTime) > 0.01) {
+        thirdVideo.currentTime = firstVideo.currentTime;
+      }
+      if (Math.abs(firstVideo.currentTime - stimuliVideo3Videos.currentTime) > 0.01) {
+        stimuliVideo3Videos.currentTime = firstVideo.currentTime;
+      }
+      if (Math.abs(firstVideo.currentTime - forthVideo.currentTime) > 0.01) {
+        forthVideo.currentTime = firstVideo.currentTime;
+      }
     });
 
     // Event listeners for controls
@@ -763,7 +939,8 @@ https://damtien444.github.io/paindf/ -->
 
     // Load initial videos
     loadVideos();
-</script>
+  </script>
 
-  </body>
-  </html>
+</body>
+
+</html>
