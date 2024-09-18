@@ -56,17 +56,40 @@
     .media-container {
       display: flex;
       justify-content: space-between;
+      align-items: flex-start;
       margin-bottom: 20px;
     }
 
     .media-wrapper {
       flex: 1;
       margin-right: 20px;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
     }
 
     .media-wrapper:last-child {
       margin-right: 0;
+    }
+
+    .video-container {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-container video {
+      max-width: 100%;
+      max-height: 200px;
+      width: auto;
+      height: auto;
+    }
+
+    .title.is-5 {
+      margin-bottom: 20px;
+      height: 30px;
+      display: flex;
+      align-items: center;
     }
 
     .video-demo-container video {
@@ -134,6 +157,7 @@
       object-fit: cover;
       aspect-ratio: 1 / 1;
     }
+    
   </style>
 
 
@@ -278,26 +302,6 @@
       <h2 class="title is-3">Output Comparison</h2>
       <div class="media-container">
         <div class="media-wrapper">
-          <h4 class="title is-5">Pain Diffusion</h4>
-          <video id="firstVideo" controls>
-            <source src="comparison/paindiffusion/0.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <p class="error-message" id="firstErrorMessage" style="display:none;">
-            Error: First video could not be loaded. Please check the file path and format.
-          </p>
-        </div>
-        <div class="media-wrapper">
-          <h4 class="title is-5">Ground Truth</h4>
-          <video id="secondVideo">
-            <source src="comparison/groundtruth/0.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <p class="error-message" id="secondErrorMessage" style="display:none;">
-            Error: Second video could not be loaded. Please check the file path and format.
-          </p>
-        </div>
-        <div class="media-wrapper">
           <h4 class="title is-5">FSQ-VAE Autoregressive baseline</h4>
           <video id="thirdVideo">
             <source src="comparison/autoregressive/0.mp4" type="video/mp4">
@@ -318,8 +322,28 @@
           </p>
         </div>
         <div class="media-wrapper">
+          <h4 class="title is-5">Pain Diffusion w/ Diffusion Forcing</h4>
+          <video id="firstVideo">
+            <source src="comparison/paindiffusion/0.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p class="error-message" id="firstErrorMessage" style="display:none;">
+            Error: First video could not be loaded. Please check the file path and format.
+          </p>
+        </div>
+        <div class="media-wrapper">
+          <h4 class="title is-5">Ground Truth</h4>
+          <video id="secondVideo">
+            <source src="comparison/groundtruth/0.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p class="error-message" id="secondErrorMessage" style="display:none;">
+            Error: Second video could not be loaded. Please check the file path and format.
+          </p>
+        </div>
+        <div class="media-wrapper">
           <h4 class="title is-5">Stimuli Signal</h4>
-          <video id="stimuliVideo3Videos">
+          <video id="stimuliVideo3Videos" controls>
             <source src="comparison/stimuli/0.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -353,7 +377,7 @@
         <div class="media-container">
           <div class="media-wrapper">
             <h4 class="title is-5">Stimuli Signal</h4>
-            <video id="stimuliVideo">
+            <video id="stimuliVideo" class="video-player">
               <source src="" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -362,7 +386,7 @@
           </div>
           <div class="media-wrapper">
             <h4 class="title is-5">Predicted Facial Expression</h4>
-            <video id="videoPlayer">
+            <video id="videoPlayer" class="video-player">
               <source src="" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -763,7 +787,7 @@ https://damtien444.github.io/paindf/ -->
       forthVideo.load();
       stimuliVideo3Videos.load();
 
-      videoIndexDisplay.textContent = `Current sample: ${idx + 1}/${maxIdx}`;
+      videoIndexDisplay.innerHTML = `<strong>Current sample: ${idx + 1}/${maxIdx}</strong>`;
 
       firstVideo.onloadeddata = function () {
         firstErrorMessage.style.display = 'none';
@@ -916,18 +940,18 @@ https://damtien444.github.io/paindf/ -->
       stimuliVideo3Videos.play();
     });
 
-    firstVideo.addEventListener('timeupdate', () => {
-      if (Math.abs(firstVideo.currentTime - secondVideo.currentTime) > 0.01) {
-        secondVideo.currentTime = firstVideo.currentTime;
+    stimuliVideo3Videos.addEventListener('timeupdate', () => {
+      if (Math.abs(stimuliVideo3Videos.currentTime - firstVideo.currentTime) > 0.01) {
+      firstVideo.currentTime = stimuliVideo3Videos.currentTime;
       }
-      if (Math.abs(firstVideo.currentTime - thirdVideo.currentTime) > 0.01) {
-        thirdVideo.currentTime = firstVideo.currentTime;
+      if (Math.abs(stimuliVideo3Videos.currentTime - secondVideo.currentTime) > 0.01) {
+      secondVideo.currentTime = stimuliVideo3Videos.currentTime;
       }
-      if (Math.abs(firstVideo.currentTime - stimuliVideo3Videos.currentTime) > 0.01) {
-        stimuliVideo3Videos.currentTime = firstVideo.currentTime;
+      if (Math.abs(stimuliVideo3Videos.currentTime - thirdVideo.currentTime) > 0.01) {
+      thirdVideo.currentTime = stimuliVideo3Videos.currentTime;
       }
-      if (Math.abs(firstVideo.currentTime - forthVideo.currentTime) > 0.01) {
-        forthVideo.currentTime = firstVideo.currentTime;
+      if (Math.abs(stimuliVideo3Videos.currentTime - forthVideo.currentTime) > 0.01) {
+      forthVideo.currentTime = stimuliVideo3Videos.currentTime;
       }
     });
 
