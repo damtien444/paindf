@@ -219,12 +219,12 @@
 
                 <!-- Github link -->
                 <span class="link-block">
-                  <a href="https://github.com/ais-lab" target="_blank"
+                  <a href="https://github.com/ais-lab/paindiffusion" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
-                    <span>Code (release soon)</span>
+                    <span>Code</span>
                   </a>
                 </span>
 
@@ -248,20 +248,16 @@
 
 
   <!-- Teaser video-->
-  <!-- <section class="hero teaser"> -->
-  <!-- <div class="container is-max-desktop"> -->
-  <!-- <div class="hero-body"> -->
-  <!-- <video poster="" id="tree" autoplay controls muted loop height="100%"> -->
-  <!-- Your video here -->
-  <!-- <source src="static/videos/banner_video.mp4" -->
-  <!-- type="video/mp4"> -->
-  <!-- </video> -->
-  <!-- <h2 class="subtitle has-text-centered"> -->
-  <!-- Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus.  -->
-  <!-- </h2> -->
-  <!-- </div> -->
-  <!-- </div> -->
-  <!-- </section> -->
+  <section class="hero teaser">
+  <div class="container is-max-desktop">
+  <div class="hero-body">
+    <div style="display: flex; justify-content: center;">
+      <iframe width="1280" height="720" src="https://www.youtube.com/embed/2ngBRkXXdMw?si=f9Hn_fwBjUqCdyMJ&amp;controls=0&amp;autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div></div>
+
+  </div>
+  </div>
+  </section>
   <!-- End teaser video -->
 
   <!-- Paper abstract -->
@@ -288,6 +284,9 @@
     </div>
   </section>
   <!-- End paper abstract -->
+
+  
+
   <section class="section">
     <div class="columns is-centered">
       <h2 class="title is-3">Methodology</h2>
@@ -517,8 +516,7 @@
     <div class="container">
       <h2 class="title is-3">Dataset Analysis</h2>
       <div class="content">
-        <p>For every chunk of video in the training dataset, we compute the average value of pain expressiveness, emotion configuration and maximum of stimulus value. We plot histogram of 50 bins to check their distributions.</p>
-        <!-- Add your dataset analysis content here -->
+        <p>For every chunk (with a length of 64 frames) of the videos in the training dataset, we compute the average values of pain expressiveness, emotion configuration, and the maximum stimulus value. We plot histograms of 50 bins to check their distributions.</p>
         <div class="columns">
           <div class="column">
             <figure class="image">
