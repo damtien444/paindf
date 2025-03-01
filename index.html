@@ -3,23 +3,15 @@
 
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="PainDiffusion">
-  <meta property="og:title" content="PainDiffusion: Can robot express pain?" />
-  <meta property="og:description" content="This is a model that learns how to express pain when it receives pain stimuli." />
-  <meta property="og:url" content="damtien444.github.io/paindf" />
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <!-- <meta property="og:image" content="static/image/your_banner_image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" /> -->
-
-
-  <!-- <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG"> -->
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <!-- <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
-  <meta name="twitter:card" content="summary_large_image"> -->
+  <!-- Meta tags for search engines and social media sharing -->
+  <meta name="description" content="PainDiffusion: A generative model for synthesizing naturalistic facial pain expressions in robotic systems">
+  <meta property="og:title" content="PainDiffusion: A Novel Approach to Robot Pain Expression Synthesis" />
+  <meta property="og:description" content="Research on generating realistic pain expressions for robotic patient simulators using diffusion models, improving clinical training and human-robot interaction." />
+  <meta property="og:url" content="https://damtien444.github.io/paindf" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PainDiffusion: A Novel Approach to Robot Pain Expression Synthesis">
+  <meta name="twitter:description" content="Research on generating realistic pain expressions for robotic patient simulators using diffusion models">
   <!-- Keywords for your paper to be indexed by-->
   <meta name="keywords" content="pain expression, diffusion model, facial expression">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -172,7 +164,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">PainDiffusion: Can robot express pain?</h1>
+            <h1 class="title is-1 publication-title">PainDiffusion: Learning To Express Pain</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
@@ -189,7 +181,7 @@
             </div>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block">Ritsumeikan University<br>Submitted to ICRA 2025</span>
+              <span class="author-block">Ritsumeikan University</span>
               <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
             </div>
 
@@ -270,16 +262,7 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Pain is a more intuitive and user-friendly way of communicating problems, making it especially useful in
-              rehabilitation nurse training robots. While most previous methods have focused on classifying or
-              recognizing pain expressions, we introduce PainDiffusion, a model that generates facial expressions in
-              response to pain stimuli, with controllable expressiveness and emotion status. PainDiffusion utilizes
-              diffusion forcing to roll out predictions over arbitrary lengths using a conditioned temporal U-Net. It
-              operates as a latent diffusion model within EMOCA's facial expression latent space. For training, we
-              process the BioVid Heatpain Database, extracting expression codes and subject identity configurations. We
-              also propose a novel set of metrics to evaluate pain expressions, covering expressiveness, diversity, and
-              the appropriateness of model-generated outputs. Finally, we demonstrate that PainDiffusion outperforms the
-              autoregressive method, both qualitatively and quantitatively. </p>
+              Accurate pain expression synthesis is essential for improving clinical training and human-robot interaction. Current Robotic Patient Simulators (RPSs) lack realistic pain facial expressions, limiting their effectiveness in medical training. In this work, we introduce PainDiffusion, a generative model that synthesizes naturalistic facial pain expressions. Unlike traditional heuristic or autoregressive methods, PainDiffusion operates in a continuous latent space, ensuring smoother and more natural facial motion while supporting indefinite-length generation via diffusion forcing. Our approach incorporates intrinsic characteristics such as pain expressiveness and emotion, allowing for personalized and controllable pain expression synthesis. We train and evaluate our model using the BioVid HeatPain Database. Additionally, we integrate PainDiffusion into a robotic system to assess its applicability in real-time rehabilitation exercises. Qualitative studies with clinicians reveal that PainDiffusion produces realistic pain expressions, with a 31.2% ± 4.8% preference rate against ground-truth recordings. Our results suggest that PainDiffusion can serve as a viable alternative to real patients in clinical training and simulation, bridging the gap between synthetic and naturalistic pain expression. </p>
           </div>
         </div>
       </div>
@@ -293,8 +276,18 @@
     <div class="columns is-centered">
       <h2 class="title is-3">Methodology</h2>
     </div>
-    <div class="columns is-centered">
-  <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="600" src="https://embed.figma.com/proto/CKW7ytfyvzXzNcBN2TZtBA/PainDiffusion?node-id=106-143&node-type=canvas&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=36%3A554&embed-host=share" allowfullscreen></iframe>
+    <div class="container is-max-desktop">
+      <div class="content has-text-justified mb-5">
+        <p>Our methodology consists of three key components:</p>
+        <ol>
+          <li><strong>Continuous Latent Space:</strong> We utilize a diffusion-based approach that operates in a continuous space, enabling smoother and more natural facial motion synthesis.</li>
+          <li><strong>Diffusion Forcing:</strong> A novel technique that allows for indefinite-length generation while maintaining temporal coherence.</li>
+          <li><strong>Controllable Generation:</strong> Integration of pain expressiveness and emotion parameters for personalized expression synthesis.</li>
+        </ol>
+      </div>
+      <div class="columns is-centered">
+        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="600" src="https://embed.figma.com/proto/CKW7ytfyvzXzNcBN2TZtBA/PainDiffusion?node-id=106-143&node-type=canvas&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=36%3A554&embed-host=share" allowfullscreen></iframe>
+      </div>
     </div>
   </section>
 
@@ -359,8 +352,15 @@
         <button id="nextBtn" class="button is-primary">Next</button>
         <!-- <button id="muteBtn3Videos">Mute</button> -->
       </div>
-      <div>
-        <p>We randomly sample from the validation set and compare the output of different baselines.</p>
+      <div class="content has-text-justified mt-4">
+        <p>This section demonstrates the comparative performance of different approaches:</p>
+        <ul>
+          <li><strong>FSQ-VAE Autoregressive baseline:</strong> Traditional sequential generation approach</li>
+          <li><strong>PainDiffusion w/ Full-seq Diffusion:</strong> Our base diffusion model without forcing</li>
+          <li><strong>PainDiffusion w/ Diffusion Forcing:</strong> Our complete model with continuous generation capability</li>
+          <li><strong>Ground Truth:</strong> Actual human expressions from the dataset</li>
+        </ul>
+        <p>The videos showcase randomly sampled examples from our validation set, demonstrating the qualitative improvements achieved by our method.</p>
       </div>
       <div class="video-index">
         <p id="videoIndexDisplay">Video Index: 1</p>
@@ -373,8 +373,16 @@
 
   <section class="section">
     <div class="container">
-      <h2 class="title is-3">Controlability Experiment</h2>
-      <div>
+      <h2 class="title is-3">Controllability Experiment</h2>
+      <div class="content has-text-justified mb-4">
+        <p>This interactive demo showcases our model's ability to generate controlled facial expressions based on three key parameters:</p>
+        <ul>
+          <li><strong>Stimuli level (1-4):</strong> Represents the intensity of pain stimulus</li>
+          <li><strong>Expressiveness index (5-11):</strong> Controls how strongly the pain is expressed</li>
+          <li><strong>Emotion index:</strong> Modulates the emotional component of the expression</li>
+        </ul>
+        <p>Use the controls below to explore different combinations and observe how they affect the generated expressions.</p>
+      </div>
         <div class="media-container">
           <div class="media-wrapper">
             <h4 class="title is-5">Stimuli Signal</h4>
@@ -413,136 +421,12 @@
             <div class="radio-group" id="emotionGroup"></div>
           </div>
         </div>
-            <div class="title is-4">The area of movement for each controllable condition.</div>
-            <div class="image-table">
-              <div class="row">
-                <h4 class="title is-5">Emotion</h4>
-                <div class="image-grid">
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/emotion_0_movement.png" alt="Anger">
-                    <p>Anger</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/emotion_1_movement.png" alt="Contempt">
-                    <p>Contempt</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/emotion_2_movement.png" alt="Disgust">
-                    <p>Disgust</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/emotion_3_movement.png" alt="Fear">
-                    <p>Fear</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/emotion_4_movement.png" alt="Happiness">
-                    <p>Happiness</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/emotion_5_movement.png" alt="Neutral">
-                    <p>Neutral</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/emotion_6_movement.png" alt="Sadness">
-                    <p>Sadness</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/emotion_7_movement.png" alt="Surprise">
-                    <p>Surprise</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="row">
-                <h4 class="title is-5">Stimuli</h4>
-                <div class="image-grid">
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/stimuli_1_movement.png" alt="Stimuli 1">
-                    <p>Stimuli 1</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/stimuli_2_movement.png" alt="Stimuli 2">
-                    <p>Stimuli 2</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/stimuli_3_movement.png" alt="Stimuli 3">
-                    <p>Stimuli 3</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/stimuli_4_movement.png" alt="Stimuli 4">
-                    <p>Stimuli 4</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="row">
-                <h4 class="title is-5">Expressiveness</h4>
-                <div class="image-grid">
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/expressiveness_5_movement.png" alt="Expressiveness 5">
-                    <p>Expressiveness 5</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/expressiveness_6_movement.png" alt="Expressiveness 6">
-                    <p>Expressiveness 6</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/expressiveness_7_movement.png" alt="Expressiveness 7">
-                    <p>Expressiveness 7</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/expressiveness_8_movement.png" alt="Expressiveness 8">
-                    <p>Expressiveness 8</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/expressiveness_9_movement.png" alt="Expressiveness 9">
-                    <p>Expressiveness 9</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/expressiveness_10_movement.png" alt="Expressiveness 10">
-                    <p>Expressiveness 10</p>
-                  </div>
-                  <div class="image-item">
-                    <img class="controllable-image" src="static/images/controllability/expressiveness_11_movement.png" alt="Expressiveness 11">
-                    <p>Expressiveness 11</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+            
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="title is-3">Dataset Analysis</h2>
-      <div class="content">
-        <p>For every chunk (with a length of 64 frames) of the videos in the training dataset, we compute the average values of pain expressiveness, emotion configuration, and the maximum stimulus value. We plot histograms of 50 bins to check their distributions.</p>
-        <div class="columns">
-          <div class="column">
-            <figure class="image">
-              <img src="static/images/average_expressiveness_ditribution.png" alt="Pain Expressiveness">
-              <figcaption>Pain Expressiveness</figcaption>
-            </figure>
-          </div>
-          <div class="column">
-            <figure class="image">
-              <img src="static/images/average_stimulus_ditribution.png" alt="Stimulus">
-              <figcaption>Stimulus</figcaption>
-            </figure>
-          </div>
-          <div class="column">
-            <figure class="image">
-              <img src="static/images/emotion_distribution.png" alt="Emotion">
-              <figcaption>Emotion</figcaption>
-            </figure>
-          </div>
-        </div>
-        <p>The BioVid Heatpain part C contains pain expressiveness mostly in the range of 7 to 10, while there's a small group of video chunks that have pain expressiveness above 10. In terms of maximum stimulus value, most of them focus on the range from 48 degrees Celsius to 52. The average emotion distribution indicates that many samples are neutral, sad or contempt.</p>
-      </div>
-    </div>
-  </section>
+
 
 
   <!--BibTex citation -->
